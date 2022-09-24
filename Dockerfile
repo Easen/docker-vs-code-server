@@ -13,6 +13,10 @@ RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 
 EXPOSE 8000/tcp
 
+RUN mkdir /vscode
+
+VOLUME [ "/vscode" ]
+
 VOLUME [ "/data" ]
 
 CMD /entrypoint.sh
