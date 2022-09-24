@@ -2,6 +2,7 @@
 
 VS Code Server running a docker container.
 
+By running this container you agree to [VS Code Server license](https://code.visualstudio.com/license/server).
 
 ## Build
 
