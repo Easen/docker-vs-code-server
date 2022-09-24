@@ -1,11 +1,14 @@
 #/bin/bash
 
 UID=${UID:-1000}
-GID=${GID:-1000}
+GID=${GID:-100}
 
-groupadd -g "$GID" group && \
-    useradd -m -u "$UID" -g group user
+grep "${GID}:" /etc/group
+[ $? -eq 0 ] || groupadd -g "$GID" users 
 
-chown -R user:group /vscode
+GROUP_NAME=`grep "${GID}:" /etc/group | awk -F':' '{print $1}'`
+useradd -m -u "$UID" -g ${GROUP_NAME} user
+
+chown -R user:${GROUP_NAME} /vscode
 
 su user /app/code-server.sh

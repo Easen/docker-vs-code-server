@@ -7,9 +7,9 @@ RUN apt-get update && \
     && \
     apt-get clean
 
-COPY ./root/ /
-
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
+
+COPY ./root/ /
 
 EXPOSE 8000/tcp
 
